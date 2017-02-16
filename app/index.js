@@ -9,9 +9,7 @@ import {
 export default class ReportApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-
-      </View>
+      
     );
   }
 }
@@ -23,5 +21,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  
+
 });
