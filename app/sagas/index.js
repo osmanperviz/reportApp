@@ -1,4 +1,4 @@
-import  loginSaga from './usersSaga'
+import  loginSaga from './loginSaga'
 
 export default function* rootSaga() {
   yield [

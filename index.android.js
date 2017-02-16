@@ -1,6 +1,5 @@
 import React from 'react'
-import ReportApp from './app'
 import { AppRegistry } from 'react-native';
+import Main from './app'
 
-
-AppRegistry.registerComponent('ReportApp', () => ReportApp);
+AppRegistry.registerComponent('ReportApp', () => Main);

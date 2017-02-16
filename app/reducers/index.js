@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux'
 import reportReducer from './report'
-import user from './report'
+import user from './user'
 
-export default combineReducers(Object.assign({},
-  reportReducer,
-  user
-))
+const reducer = combineReducers(Object.assign({},{
+   reportReducer
+ }));
+
+export default reducer

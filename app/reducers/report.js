@@ -1,5 +1,10 @@
 import createReducer from '../lib/createReducer'
+import * as types from '../actions/types'
 
-export const report = createReducer({}, {
-  
+const report = createReducer({}, {
+  [types.USER_LOGIN](state, action){
+    return {new_state};
+  }
 })
+
+export default report

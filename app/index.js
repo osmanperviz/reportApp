@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, combineRedurs, compose } from 'redux'
 import createLogger from 'redux-logger'
-import reducer from './app/reducers'
+import reducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
-import rootSaga from './app/sagas'
+import rootSaga from './sagas'
+import AppContainer from './containers/AppContainer'
 
 const loggerMiddleware = createLogger({ predicate: (getStae, actions) => __DEV__})
 const sagaMiddleware = createSagaMiddleware();
@@ -24,17 +25,8 @@ sagaMiddleware.run(rootSaga)
 
 
 const App = () => (
-  <Provider store={store}>
-    
-  </Provider>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
 )
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-
-});
+export default App
