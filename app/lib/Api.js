@@ -26,7 +26,7 @@ class Api {
   }
 
   static xhr(route, params, verb) {
-    const host = 'https://jsonplaceholder.typicode.com'
+    const host = 'localhost:4000'
     const url = `${host}${route}`
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null);
     options.headers = Api.headers
