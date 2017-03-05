@@ -30,7 +30,7 @@ export default function requiresAuth(Component) {
     render() {
       return (
       <View style={{flex:1}}>
-         { props.user ? <Component {...this.props} /> : <Login /> }
+         { props.account.user ? <Component {...this.props} /> : <Login /> }
       </View>
       );
     }

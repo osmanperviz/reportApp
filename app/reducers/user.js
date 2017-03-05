@@ -1,4 +1,4 @@
-import createReducer from '../lib/createReducer'
+import createReducer from '../lib/CreateReducer'
 
 const user = createReducer({}, {
 
