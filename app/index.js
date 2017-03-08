@@ -6,7 +6,7 @@ import createLogger from 'redux-logger'
 import reducer from './reducers'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './sagas'
-import AppContainer from './containers/AppContainer'
+import Navigation from './containers/Navigation'
 
 const loggerMiddleware = createLogger({ predicate: (getStae, actions) => __DEV__})
 const sagaMiddleware = createSagaMiddleware();
@@ -26,7 +26,7 @@ sagaMiddleware.run(rootSaga)
 
 const App = () => (
     <Provider store={store}>
-      <AppContainer />
+      <Navigation />
     </Provider>
 )
 export default App

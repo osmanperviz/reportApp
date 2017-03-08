@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
-import { routerReducer } from 'react-native-redux-router'
 import reportReducer from './report'
 import user from './user'
+import navReducer from './nav'
 
 const reducer = combineReducers(Object.assign({},{
-   reportReducer,
-   routerReducer
+   report: reportReducer,
+   nav: navReducer,
  }));
 
 export default reducer
