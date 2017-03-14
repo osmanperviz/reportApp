@@ -1,27 +1,32 @@
 
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware, combineRedurs, compose } from 'redux'
+import createLogger from 'redux-logger'
+import reducer from './reducers'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas'
+import Navigation from './containers/Navigation'
 
-export default class ReportApp extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
+const loggerMiddleware = createLogger({ predicate: (getStae, actions) => __DEV__})
+const sagaMiddleware = createSagaMiddleware();
 
-      </View>
-    );
-  }
+function configureStore(initialState) {
+  const enhancer = compose(
+    applyMiddleware(
+      loggerMiddleware,
+      sagaMiddleware
+    ),
+  );
+  return createStore(reducer, initialState, enhancer)
 }
+const store = configureStore({})
+sagaMiddleware.run(rootSaga)
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  
-});
+
+const App = () => (
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
+)
+export default App

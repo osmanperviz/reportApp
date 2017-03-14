@@ -1,0 +1,3 @@
+export const USER_LOGIN = 'USER_LOGIN'
+export const USERS_LOGIN_SUCCESS = 'USERS_LOGIN_SUCCESS'
+export const REPORT = 'REPORT'
