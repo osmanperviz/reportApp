@@ -7,10 +7,15 @@ const Subject = ({ text, dismissModal }) => {
       <TouchableHighlight onPress={()=> {
         dismissModal()
       }}>
-        <Text>{ text }</Text>
+       <Text>{ text }</Text>
       </TouchableHighlight>
     </View>
   )
+}
+
+Subject.propTypes = {
+  text: React.PropTypes.string.isRequired,
+  dismissModal: React.PropTypes.func.isRequired
 }
 
 export default Subject

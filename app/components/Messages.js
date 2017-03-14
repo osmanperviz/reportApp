@@ -1,5 +1,6 @@
 import React from 'react'
 import {Modal, View, Text, TouchableHighlight, StyleSheet} from 'react-native'
+import {Answers} from '../Config'
 import Subject from './Subject'
 
 const Messages = ({animationType, transparent, visible, dismissModal}) => {
@@ -10,7 +11,9 @@ const Messages = ({animationType, transparent, visible, dismissModal}) => {
         transparent={transparent}
         visible={visible}>
         <View style={styles.container}>
-          <Subject text={'Subject 1'} dismissModal={dismissModal}/>
+          <Subject text={Answers.first} dismissModal={dismissModal}/>
+          <Subject text={Answers.second} dismissModal={dismissModal}/>
+          <Subject text={Answers.third} dismissModal={dismissModal}/>
         </View>
       </Modal>
     </View>

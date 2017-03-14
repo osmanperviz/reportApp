@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Expo from 'exponent'
-import { View, Text, StyleSheet, Button } from 'react-native';
+import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { connect } from 'react-redux'
 
 import Modal from './Messages'
@@ -23,18 +23,19 @@ class Home extends Component {
   _handleReportPress = () => {
     const deviceId = Expo.Constants.deviceId
     navigator.geolocation.getCurrentPosition((position) => {
-        this.setState({
-          lat: position.coords.latitude,
-          lot: position.coords.longitude,
-          modalVisible: true,
-          deviceId: deviceId
-        })
+      this.setState({
+        lat: position.coords.latitude,
+        lot: position.coords.longitude,
+        modalVisible: true,
+        deviceId: deviceId
+      })
     }, (error) => {
-        console.log(error)
+      console.log(error)
     })
   }
 
   _dismissModal = () => {
+    console.log(this.state)
     this.setState({
       modalVisible: !this.state.modalVisible
     })
@@ -44,7 +45,10 @@ class Home extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
-          <Button onPress={this._handleReportPress} title="REPORT!!!" color="#FFFFFF" accessibilityLabel="Tap on Me"/>
+          <Button onPress={this._handleReportPress} title="Report" color="#FFFFFF" accessibilityLabel="Tap on Me"/>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button onPress={this._handleReportPress} title="Take Picture" color="#FFFFFF" accessibilityLabel="Tap on Me"/>
         </View>
         <View>
           <Modal
@@ -67,8 +71,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   buttonContainer: {
+    marginTop: 20,
     backgroundColor: '#2E9298',
     borderRadius: 10,
+    width: 200,
     padding: 10,
     shadowColor: '#000000',
     shadowOffset: {
