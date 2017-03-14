@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
-const Login = () =>(
-  <View style={styles.container} >
-      <Text>Login!!!!</Text>
-  </View>
+const Login = () => (
+    <View style={styles.container}>
+        <Text>Login!!!!</Text>
+    </View>
 )
 
 const styles = StyleSheet.create({
@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'transparent',
+        backgroundColor: 'transparent'
     }
 });
 
