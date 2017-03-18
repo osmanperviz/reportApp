@@ -1,6 +1,6 @@
 import React from 'react'
 import {Modal, View, Text, TouchableHighlight, StyleSheet} from 'react-native'
-import {Answers} from '../Config'
+import { Answers } from '../Config'
 import Subject from './Subject'
 
 const Messages = ({animationType, transparent, visible, dismissModal}) => {

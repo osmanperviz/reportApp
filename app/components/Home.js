@@ -8,40 +8,32 @@ import Modal from './Messages'
 class Home extends Component {
 
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'Report'
   };
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      animationType: 'slide',
-      transparent: false,
-      modalVisible: false
-    }
+ _handleReportPress = () => {
+    this._getUsersCordinates()
   }
 
-  _handleReportPress = () => {
+  _getUsersCordinates = () => {
+    navigator.geolocation.getCurrentPosition(this._onGeoSuccess,this._onGeoError)
+  }
+  _onGeoSuccess = (position) => {
     const deviceId = Expo.Constants.deviceId
-    navigator.geolocation.getCurrentPosition((position) => {
-      this.setState({
-        lat: position.coords.latitude,
-        lot: position.coords.longitude,
-        modalVisible: true,
-        deviceId: deviceId
-      })
-    }, (error) => {
-      console.log(error)
-    })
+    const info ={ lat: position.coords.latitude, lot: position.coords.longitude, deviceId }
+    this.props.setUserLocation(info)
+  }
+
+  _onGeoError = (error) => {
+    console.log(error)
   }
 
   _dismissModal = () => {
-    console.log(this.state)
-    this.setState({
-      modalVisible: !this.state.modalVisible
-    })
+    this.props.dismissModal()
   }
 
   render() {
+    console.info(this.props.dismissModal)
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
@@ -52,9 +44,9 @@ class Home extends Component {
         </View>
         <View>
           <Modal
-            animationType={this.state.animationType}
-            transparent={this.state.transparent}
-            visible={this.state.modalVisible}
+            animationType={'slide'}
+            transparent={false}
+            visible={this.props.report.modalVisible}
             dismissModal={this._dismissModal}/>
         </View>
       </View>

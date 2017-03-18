@@ -4,8 +4,7 @@ class Api {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
       'dataType': 'json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'X-Mashape-Key': 'dfghjkopoiuhgfdfvgbhjkliuytgf'
+      'X-Requested-With': 'XMLHttpRequest'
     }
   }
 
@@ -26,8 +25,9 @@ class Api {
   }
 
   static xhr(route, params, verb) {
-    const host = 'localhost:4000'
-    const url = `${host}${route}`
+    // const host = 'localhost:4000'
+    // const url = `${host}${route}`
+    const url = route
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null);
     options.headers = Api.headers
     return fetch(url, options).then( resp => {
