@@ -13,8 +13,9 @@ export function setUserLocation(info) {
     info
   }
 }
-export function dismissModal() {
+export function selectMessage(message) {
   return {
-    type: types.DISMISS_MODAL,
+    type: types.SELECT_MESSAGE,
+    message
   }
 }

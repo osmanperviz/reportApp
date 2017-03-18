@@ -1,17 +1,15 @@
-import { fork, put, call, select, takeEvery } from "redux-saga/effects"
+import { fork, put, call, select, takeEvery,take } from "redux-saga/effects"
 import Api from '../lib/Api'
 import * as types from '../actions/types'
-
 
 function* performSetUserLocation(request){
   try {
     const { lat, lot, deviceId } = request.info
-    path = `http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lot}&sensor=false`
-    const { results } = yield call(Api.get,path)
+    const { results } = yield call(Api.getLocationData, lat, lot)
     const { address, administrativeCentar } = handleResponse(results)
     yield put({ type: types.SET_USER_LOCATION_SUCCESS, payload: {address, administrativeCentar, lat, lot, deviceId}})
   } catch (err) {
-    console.info(err)
+    yield put({ type: types.SET_USER_LOCATION_ERROR})
   }
 }
 
@@ -21,6 +19,8 @@ function handleResponse(results) {
     administrativeCentar: results[2].address_components[0].long_name
   }
 }
+
+export const getProject = (state) => state.report
 
 function* watchSetUserLocation() {
   yield takeEvery(types.SET_USER_LOCATION, performSetUserLocation);

@@ -1,4 +1,7 @@
 class Api {
+  static google_endpoint = "http://maps.googleapis.com/maps/api/geocode/json?latlng="
+  static backend_endpoint = "localhost:4000"
+
   static headers() {
     return {
       'Accept': 'application/json',
@@ -8,6 +11,10 @@ class Api {
     }
   }
 
+  static getLocationData(lat, lot) {
+    debugger;
+    return Api.xhr(`${lat},${lot}&sensor=false`, null,'GET',  Api.google_endpoint)
+  }
   static get(route) {
     return Api.xhr(route, null, 'GET')
   }
@@ -24,10 +31,8 @@ class Api {
     return this.xhr(route, params, 'DELETE')
   }
 
-  static xhr(route, params, verb) {
-    // const host = 'localhost:4000'
-    // const url = `${host}${route}`
-    const url = route
+  static xhr(route, params, verb, host=Api.backend_endpoint) {
+    const url = `${host}${route}`
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null);
     options.headers = Api.headers
     return fetch(url, options).then( resp => {

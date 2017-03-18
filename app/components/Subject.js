@@ -1,12 +1,10 @@
 import React from 'react'
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
 
-const Subject = ({ text, dismissModal }) => {
+const Subject = ({ text, selectMessage }) => {
   return(
     <View style={styles.buttonContainer}>
-      <TouchableHighlight onPress={()=> {
-        dismissModal()
-      }}>
+      <TouchableHighlight key={text} onPress={()=> { selectMessage(text) }}>
        <Text>{ text }</Text>
       </TouchableHighlight>
     </View>
@@ -15,7 +13,7 @@ const Subject = ({ text, dismissModal }) => {
 
 Subject.propTypes = {
   text: React.PropTypes.string.isRequired,
-  dismissModal: React.PropTypes.func.isRequired
+  selectMessage: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({

@@ -28,12 +28,11 @@ class Home extends Component {
     console.log(error)
   }
 
-  _dismissModal = () => {
-    this.props.dismissModal()
+  _selectMessage = (message) => {
+    this.props.selectMessage(message)
   }
 
   render() {
-    console.info(this.props.dismissModal)
     return (
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
@@ -47,12 +46,18 @@ class Home extends Component {
             animationType={'slide'}
             transparent={false}
             visible={this.props.report.modalVisible}
-            dismissModal={this._dismissModal}/>
+            selectMessage={this._selectMessage}/>
         </View>
       </View>
     )
   }
 
+}
+
+Home.PropTypes = {
+  modalVisible: React.PropTypes.bool.isRequired,
+  selectMessage: React.PropTypes.func.isRequired,
+  setUserLocation: React.PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
