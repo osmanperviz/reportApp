@@ -1,15 +1,22 @@
 import React, {Component} from 'react'
 import Expo from 'exponent'
-import { View, Text, StyleSheet, Button, Image } from 'react-native';
+import { View, Text, StyleSheet, Button, Image, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux'
 
 import Modal from './Messages'
+import Submit from './Submit'
+import ActionButton from './ActionButton'
 
 class Home extends Component {
 
   static navigationOptions = {
     title: 'Report'
   };
+
+  _handleCameraPress = async () => {
+    let result = await Expo.ImagePicker.launchCameraAsync();
+    this.props.setImageUrl(result.uri)
+  }
 
  _handleReportPress = () => {
     this._getUsersCordinates()
@@ -33,21 +40,19 @@ class Home extends Component {
   }
 
   render() {
+    console.info(this.props)
     return (
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button onPress={this._handleReportPress} title="Report" color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button onPress={this._handleReportPress} title="Take Picture" color="#FFFFFF" accessibilityLabel="Tap on Me"/>
-        </View>
-        <View>
-          <Modal
-            animationType={'slide'}
-            transparent={false}
-            visible={this.props.report.modalVisible}
-            selectMessage={this._selectMessage}/>
-        </View>
+        <ActionButton handlePress={this._handleReportPress} title='Report' />
+        <ActionButton handlePress={this._handleCameraPress} title="Camera" />
+        <Modal
+          animationType={'slide'}
+          transparent={false}
+          visible={this.props.report.modalVisible}
+          selectMessage={this._selectMessage}/>
+
+        <Submit dissable={this.props.report.address ? true : false}  />
+        { this.props.report.loading && <Spiner />}
       </View>
     )
   }
@@ -62,24 +67,11 @@ Home.PropTypes = {
 
 const styles = StyleSheet.create({
   container: {
+    position: 'relative',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent'
-  },
-  buttonContainer: {
-    marginTop: 20,
-    backgroundColor: '#2E9298',
-    borderRadius: 10,
-    width: 200,
-    padding: 10,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 10,
-    shadowOpacity: 0.25
   }
 });
 

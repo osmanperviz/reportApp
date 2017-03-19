@@ -2,12 +2,14 @@ import createReducer from '../lib/CreateReducer'
 import * as types from '../actions/types'
 
 initialState = {
-  modalVisible: false
+  modalVisible: false,
+  loading: false
 }
 const report = createReducer(initialState, {
   [types.SET_USER_LOCATION_SUCCESS](state, action){
     return Object.assign({}, state, {
       modalVisible: true,
+      loading: false,
       ...action.payload,
     })
   },
@@ -17,7 +19,18 @@ const report = createReducer(initialState, {
   [types.SELECT_MESSAGE](state, action){
     return Object.assign({}, state, {
       message: action.message,
-      modalVisible: false
+      modalVisible: false,
+      loading: false,
+    })
+  },
+  [types.SET_IMAGE_URL](state, action){
+    return Object.assign({}, state, {
+      imageUrl: action.imageUrl
+    })
+  },
+  [types.SET_LOADING_STATE](state, action){
+    return Object.assign({}, state, {
+      loading: true
     })
   }
 })

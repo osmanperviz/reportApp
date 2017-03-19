@@ -8,13 +8,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setUserLocation(info){
-    dispatch(setUserLocation(info));
-  },
-  selectMessage(message){
-    dispatch(selectMessage(message));
-  }
-
+  setUserLocation(info){ dispatch(setUserLocation(info)) },
+  selectMessage(message){ dispatch(selectMessage(message)) },
+  setImageUrl(url){ dispatch(setImageUrl(url)) }
 })
 
 

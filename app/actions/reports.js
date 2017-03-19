@@ -19,3 +19,9 @@ export function selectMessage(message) {
     message
   }
 }
+export function setImageUrl(url) {
+  return {
+    type: types.SET_IMAGE_URL,
+    url
+  }
+}

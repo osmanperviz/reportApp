@@ -1,6 +1,6 @@
 import React from 'react'
 import {Modal, View, Text, TouchableHighlight, StyleSheet} from 'react-native'
-import { Answers } from '../Config'
+import { Answers } from '../config'
 import Subject from './Subject'
 
 const Messages = ({animationType, transparent, visible, selectMessage}) => {
@@ -10,11 +10,11 @@ const Messages = ({animationType, transparent, visible, selectMessage}) => {
         animationType={animationType}
         transparent={transparent}
         visible={visible}>
-        <View style={styles.container}>
-          <Subject text={Answers.first} selectMessage={selectMessage}/>
-          <Subject text={Answers.second} selectMessage={selectMessage}/>
-          <Subject text={Answers.third} selectMessage={selectMessage}/>
-        </View>
+          <View style={styles.container}>
+            <Subject text={Answers.first} selectMessage={selectMessage}/>
+            <Subject text={Answers.second} selectMessage={selectMessage}/>
+            <Subject text={Answers.third} selectMessage={selectMessage}/>
+          </View>
       </Modal>
     </View>
   )

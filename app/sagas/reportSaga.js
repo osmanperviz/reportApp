@@ -1,4 +1,4 @@
-import { fork, put, call, select, takeEvery,take } from "redux-saga/effects"
+import { fork, put, call, select, takeLatest,take } from "redux-saga/effects"
 import Api from '../lib/Api'
 import * as types from '../actions/types'
 
@@ -20,12 +20,18 @@ function handleResponse(results) {
   }
 }
 
-export const getProject = (state) => state.report
-
 function* watchSetUserLocation() {
-  yield takeEvery(types.SET_USER_LOCATION, performSetUserLocation);
+  yield takeLatest(types.SET_USER_LOCATION, performSetUserLocation);
 }
+
+// function* watchLoadingState() {
+//   debugger;
+//   yield takeEvery('*', () =>{
+//     put('SET_LOADING_STATE')
+//   });
+// }
 
 export default [
   fork(watchSetUserLocation),
+  // fork(watchLoadingState),
 ]
