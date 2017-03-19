@@ -6,3 +6,22 @@ export function report(geoLocation) {
     geoLocation
   }
 }
+
+export function setUserLocation(info) {
+  return {
+    type: types.SET_USER_LOCATION,
+    info
+  }
+}
+export function selectMessage(message) {
+  return {
+    type: types.SELECT_MESSAGE,
+    message
+  }
+}
+export function setImageUrl(url) {
+  return {
+    type: types.SET_IMAGE_URL,
+    url
+  }
+}
