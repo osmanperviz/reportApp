@@ -1,14 +1,15 @@
 import React from 'react'
-import { View, Text, TouchableHighlight, StyleSheet, Button} from 'react-native'
+import { View, Text, StyleSheet, Button} from 'react-native'
 
-const Submit = ({ handleSubmit, dissable }) => {
+const Submit = ({ handleSubmit, disabled=true }) => {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={[ styles.buttonContainer, disabled && styles.buttonContainerDisabled]}>
       <Button
          title="Submit"
          color="#FFFFFF"
          accessibilityLabel="Tap on Me"
-         disabled={dissable}
+         disabled={disabled}
+         onPress={!disabled && handleSubmit}
        />
     </View>
   )
@@ -28,6 +29,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 10,
     shadowOpacity: 0.25
+  },
+  buttonContainerDisabled: {
+    opacity: 0.2
   }
 })
 export default Submit

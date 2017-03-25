@@ -6,7 +6,6 @@ export function report(geoLocation) {
     geoLocation
   }
 }
-
 export function setUserLocation(info) {
   return {
     type: types.SET_USER_LOCATION,
@@ -19,9 +18,15 @@ export function selectMessage(message) {
     message
   }
 }
-export function setImageUrl(url) {
+export function setImageUrl(imageUrl) {
   return {
     type: types.SET_IMAGE_URL,
-    url
+    imageUrl
+  }
+}
+export function submitReport(data) {
+  return {
+    type: types.SUBMIT_REPORT,
+    data
   }
 }
