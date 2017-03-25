@@ -25,7 +25,7 @@ const report = createReducer(initialState, {
   },
   [types.SET_IMAGE_URL](state, action){
     return Object.assign({}, state, {
-      imageUrl: action.imageUrl
+      image_url: action.imageUrl
     })
   },
   [types.SET_LOADING_STATE](state, action){
