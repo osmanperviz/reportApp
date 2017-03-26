@@ -30,3 +30,8 @@ export function submitReport(data) {
     data
   }
 }
+export function permit_custom_subject() {
+  return {
+    type: types.PERMIT_CUSTUM_SUBJECT
+  }
+}
