@@ -25,10 +25,12 @@ const report = createReducer(initialState, {
   },
   [types.SET_IMAGE_URL](state, action){
     return Object.assign({}, state, {
-      image_url: action.imageUrl
+      image_url: action.imageUrl,
+      loading: false
     })
   },
   [types.SET_LOADING_STATE](state, action){
+    console.log('reducer tregerd')
     return Object.assign({}, state, {
       loading: true
     })

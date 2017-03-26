@@ -1,15 +1,15 @@
 import React from 'react'
 import { View, Text, StyleSheet, Button} from 'react-native'
 
-const Submit = ({ handleSubmit, disabled=true }) => {
+const Submit = ({ handleSubmit, disabled = true }) => {
   return (
     <View style={[ styles.buttonContainer, disabled && styles.buttonContainerDisabled]}>
       <Button
          title="Submit"
          color="#FFFFFF"
          accessibilityLabel="Tap on Me"
-         disabled={disabled}
-         onPress={!disabled && handleSubmit}
+         disabled={ disabled }
+         onPress={ handleSubmit }
        />
     </View>
   )
