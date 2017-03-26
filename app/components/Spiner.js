@@ -1,10 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, StyleSheet, ActivityIndicator } from 'react-native';
 
 const Spiner = () => {
-  <View style={styles.container}>
-    <ActivityIndicator size="large"  />
-  </View>
+  return (
+    <View style={styles.container}>
+      <ActivityIndicator size="large"  />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import Modal from './Messages'
 import Submit from './Submit'
 import ActionButton from './ActionButton'
+import Spiner from './Spiner'
 
 class Home extends Component {
 
@@ -65,7 +66,7 @@ class Home extends Component {
           selectMessage={this._selectMessage}/>
 
         <Submit handleSubmit={this._handleSubmit} disabled={!this._checkMandatoryData()}  />
-        { this.props.report.loading && <Spiner /> }
+        {this.props.report.loading &&  <Spiner /> }
       </View>
     )
   }
