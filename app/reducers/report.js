@@ -3,7 +3,8 @@ import * as types from '../actions/types'
 
 initialState = {
   modalVisible: false,
-  loading: false
+  loading: false,
+  allow_custom_subject: false
 }
 const report = createReducer(initialState, {
   [types.SET_USER_LOCATION_SUCCESS](state, action){
@@ -21,6 +22,7 @@ const report = createReducer(initialState, {
       message: action.message,
       modalVisible: false,
       loading: false,
+      allow_custom_subject: false
     })
   },
   [types.SET_IMAGE_URL](state, action){
@@ -30,9 +32,13 @@ const report = createReducer(initialState, {
     })
   },
   [types.SET_LOADING_STATE](state, action){
-    console.log('reducer tregerd')
     return Object.assign({}, state, {
       loading: true
+    })
+  },
+  [types.PERMIT_CUSTUM_SUBJECT](state, action){
+    return Object.assign({}, state, {
+      allow_custom_subject: true
     })
   }
 })

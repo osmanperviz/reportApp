@@ -42,6 +42,8 @@ class Home extends Component {
     this.props.setUserLocation(info);
   }
 
+  _permit_custom_subject = () => this.props.permit_custom_subject()
+
   _onGeoError = error =>  console.log(error)
 
   _selectMessage = message => this.props.selectMessage(message)
@@ -63,7 +65,10 @@ class Home extends Component {
           animationType={'slide'}
           transparent={false}
           visible={this.props.report.modalVisible}
-          selectMessage={this._selectMessage}/>
+          selectMessage={this._selectMessage}
+          allow_custom_subject={this.props.report.allow_custom_subject}
+          permit_custom_subject={this._permit_custom_subject}
+        />
 
         <Submit handleSubmit={this._handleSubmit} disabled={!this._checkMandatoryData()}  />
         {this.props.report.loading &&  <Spiner /> }
